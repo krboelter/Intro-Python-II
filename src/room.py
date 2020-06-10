@@ -2,6 +2,10 @@
 # description attributes.
 
 class Room:
-    __init__(self, name, description):
+    def __init__(self, name, description):
         self.name = name
         self.description = description
+
+    def __str__(self):
+        return f"You are currently in the {self.name}, it is {self.description}"
+
