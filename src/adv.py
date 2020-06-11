@@ -51,23 +51,28 @@ while True:
     user_input = input("\n*Which direction would you like to go?* ")
 
     try:
-        if user_input == "n" or user_input == "N":
-            if player_1.location.n_to:
-                player_1.move_to(player_1.location.n_to)
-        elif user_input == "e" or user_input == "E":
-            if player_1.location.e_to:
-                player_1.move_to(player_1.location.e_to)
-        elif user_input == "s" or user_input == "S":
-            if player_1.location.s_to:
-                player_1.move_to(player_1.location.s_to)
-        elif user_input == "w" or user_input == "W":
-            if player_1.location.w_to:
-                player_1.move_to(player_1.location.w_to)
-        elif user_input == "q" or user_input == "Q":
-            print("Thanks for playing!")
-            break
-        else:
-            print("Not a valid command")
+        for user_input in ["n", "e", "s", "w", "q"]:
+            if player_1.hasattr(location, f"{user_input}_to"):
+                player_1.move_to(player_1.getattr(location, f"{user_input}_to"
+            # elif user_input == "q":
+            #     print("Thanks for playing!")
+            #     break
+            # else:
+            #     print("Not a valid command")
+
+        # if user_input == "n" or user_input == "N":
+        #     if player_1.location.n_to:
+        #         player_1.move_to(player_1.location.n_to)
+        # elif user_input == "e" or user_input == "E":
+        #     if player_1.location.e_to:
+        #         player_1.move_to(player_1.location.e_to)
+        # elif user_input == "s" or user_input == "S":
+        #     if player_1.location.s_to:
+        #         player_1.move_to(player_1.location.s_to)
+        # elif user_input == "w" or user_input == "W":
+        #     if player_1.location.w_to:
+        #         player_1.move_to(player_1.location.w_to)
+
     except:
         print("No room in that direction")
 
