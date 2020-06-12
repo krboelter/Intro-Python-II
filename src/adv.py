@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from furniture import Furniture
 
 # Declare all the rooms
 
@@ -23,6 +24,19 @@ earlier adventurers. The only exit is to the south."""),
 }
 
 
+# Create furniture
+
+dresser = Furniture("dresser", "A wooden dresser, looks like its been here a while", [])
+sofa = Furniture("sofa", "A large sofa. There are almost definitely things between the cushions", [])
+desk = Furniture("desk", "Used for doing work.", [])
+table = Furniture("table", "Used for hosting banquets and feasts", [])
+chest = Furniture("chest", "Used for storing personal treasures", [])
+
+# Assign furniture
+
+room['foyer'].furniture = [dresser, sofa]
+room['treasure'].furniture = [chest, desk, table]
+
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
@@ -35,50 +49,36 @@ room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
 
+# Create items
+
+candle = ("candle", "Helpful in the dark... or for a small amount of warmth")
+key = ("key", "A well-polished, silver key")
+note = ("handwritten note", "The note reads: You are too late, the treasure is mine... Cpt. Drax Maygar")
+
+
+# Assign items
+
+sofa.contents = key
+dresser.contents = candle
+chest.contents = note
+
 # Main
 
-
-# Make a new player object that is currently in the 'outside' room.
 player_1 = Player("Ken", room['outside'])
 print(player_1.location)
 
-# Write a loop that:
-
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
 while True:
-    user_input = input("\n*Which direction would you like to go?* ")
+    user_input = input("\n*What would you like to do?* ")
 
-    try:
-        for user_input in ["n", "e", "s", "w", "q"]:
-            if player_1.hasattr(location, f"{user_input}_to"):
-                player_1.move_to(player_1.getattr(location, f"{user_input}_to"
-            # elif user_input == "q":
-            #     print("Thanks for playing!")
-            #     break
-            # else:
-            #     print("Not a valid command")
-
-        # if user_input == "n" or user_input == "N":
-        #     if player_1.location.n_to:
-        #         player_1.move_to(player_1.location.n_to)
-        # elif user_input == "e" or user_input == "E":
-        #     if player_1.location.e_to:
-        #         player_1.move_to(player_1.location.e_to)
-        # elif user_input == "s" or user_input == "S":
-        #     if player_1.location.s_to:
-        #         player_1.move_to(player_1.location.s_to)
-        # elif user_input == "w" or user_input == "W":
-        #     if player_1.location.w_to:
-        #         player_1.move_to(player_1.location.w_to)
-
-    except:
-        print("No room in that direction")
-
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
-
+    if user_input in ["n", "e", "s", "w", "q", "search", "get", "drop"]:
+        if hasattr(player_1.location, f"{user_input}_to"):
+            player_1.location = getattr(player_1.location, f"{user_input}_to")
+            print(player_1.location)
+        elif user_input == "search":
+            player_1.search_room()
+        elif user_input == "q":
+            print("Thanks for playing!")
+            break
+        else:
+            print("Not a valid command")
 
