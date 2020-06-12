@@ -27,12 +27,18 @@ class Player:
             print("There is nothing of interest in this room.")
 
     def get_item(self):
-        item = input("Which item would you like to get from your backpack? ")
+        item = input("*Which item would you like to get from your backpack?* ")
         if str(item) in str(self.items):
-            self.in_hand = item
+            print(item, str(self.items), "ITEMS")
+            # print(self.in_hand)
+            # self.items.remove(str(item))
             print(f"You wield the {self.in_hand} in your hand")
         else:
             print("You don't have that item in your backpack.")
             
     def drop_item():
-        pass
+        item = input("*Which item would you like to drop?* ")
+        if str(item) in str(self.items):
+            self.location.dropped_items.append(item)
+            print(f"{item} has been dropped.")
+            print(self.location.dropped_items)

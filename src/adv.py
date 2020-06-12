@@ -78,6 +78,8 @@ while True:
             player_1.search_room()
         elif user_input == "get":
             player_1.get_item()
+        elif user_input == "drop":
+            player_1.drop_item()
         elif user_input == "q":
             print("Thanks for playing!")
             break

@@ -6,6 +6,7 @@ class Room:
         self.name = name
         self.description = description
         self.furniture = []
+        self.dropped_items = []
 
     def __str__(self):
         return f"You are currently in the {self.name}, it is {self.description}."
