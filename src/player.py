@@ -6,6 +6,7 @@ class Player:
         self.name = name
         self.location = location
         self.items = []
+        self.in_hand = ""
 
 
     def __str__(self):
@@ -21,7 +22,17 @@ class Player:
             if int(search) in range(1, len(self.location.furniture) + 1):
                 item = self.location.furniture[int(search) - 1].contents
                 self.items.append(item)
-                print(f"You picked up: {item[0]}.") 
+                print(f"{item[0]} has been added to your backpack.") 
         else:
             print("There is nothing of interest in this room.")
+
+    def get_item(self):
+        item = input("Which item would you like to get from your backpack? ")
+        if str(item) in str(self.items):
+            self.in_hand = item
+            print(f"You wield the {self.in_hand} in your hand")
+        else:
+            print("You don't have that item in your backpack.")
             
+    def drop_item():
+        pass

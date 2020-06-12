@@ -76,6 +76,8 @@ while True:
             print(player_1.location)
         elif user_input == "search":
             player_1.search_room()
+        elif user_input == "get":
+            player_1.get_item()
         elif user_input == "q":
             print("Thanks for playing!")
             break
