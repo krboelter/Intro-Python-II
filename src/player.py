@@ -6,7 +6,7 @@ class Player:
         self.name = name
         self.location = location
         self.items = []
-        self.in_hand = ""
+        self.in_hand = []
 
 
     def __str__(self):
@@ -28,10 +28,16 @@ class Player:
 
     def get_item(self):
         item = input("*Which item would you like to get from your backpack?* ")
-        if str(item) in str(self.items):
-            print(item, str(self.items), "ITEMS")
-            # print(self.in_hand)
-            # self.items.remove(str(item))
+        
+        # check to see if player has the item
+        if item in str(self.items):
+
+            # remove the item from self.items array
+            # ***still need to check to see if they have anything in their hand***
+            for i in range(len(self.items)):
+                if item == self.items[i][0]:
+                    self.in_hand = self.items[i]
+                    self.items.remove(self.items[i])
             print(f"You wield the {self.in_hand} in your hand")
         else:
             print("You don't have that item in your backpack.")
