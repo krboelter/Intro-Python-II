@@ -8,7 +8,6 @@ class Player:
         self.items = []
         self.in_hand = []
 
-
     def __str__(self):
         return f"{self.name}"
 
@@ -42,9 +41,11 @@ class Player:
         else:
             print("You don't have that item in your backpack.")
             
-    def drop_item():
+    def drop_item(self):
         item = input("*Which item would you like to drop?* ")
-        if str(item) in str(self.items):
+        if item in str(self.items):
             self.location.dropped_items.append(item)
             print(f"{item} has been dropped.")
-            print(self.location.dropped_items)
+            for i in range(len(self.items)):
+                self.items.remove(self.items[i])
+
