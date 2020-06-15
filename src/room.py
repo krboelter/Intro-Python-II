@@ -15,7 +15,7 @@ class Room:
         if self.furniture is not None:
             print("Furniture in the room:")
             for i in range(len(self.furniture)):
-                print(f"{i + 1}: {self.furniture[i]}.")
+                print(f"Press {i + 1} for: {self.furniture[i]}.")
         else:
             print("There is nothing of interest in this room")
 

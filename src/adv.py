@@ -66,6 +66,16 @@ chest.contents = note
 
 player_1 = Player("Ken", room['outside'])
 print(player_1.location)
+print("""
+    Commands:
+        n = move north
+        e = move east
+        s = move south
+        w = move west
+        q = move quit
+        search = search the current room
+        get = get an item from your backpack
+        drop = drop an item""")
 
 while True:
     user_input = input("\n*What would you like to do?* ")
@@ -83,6 +93,18 @@ while True:
         elif user_input == "q":
             print("Thanks for playing!")
             break
-        else:
-            print("Not a valid command")
+            
+    else:
+        print("""
+        Error...
+        Commands:
+            n = north
+            e = east
+            s = south
+            w = west
+            q = quit
+            search = search the current room
+            get = get an item from your backpack
+            drop = drop an item""")
+
 
